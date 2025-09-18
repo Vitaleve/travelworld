@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="img-src 'self' https://images.pexels.com data:;">
+  <title>TRAVEL WORLD — Credits</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#5a52e0">
+  <style>
+    :root{
+      --brand:#5a52e0;
+      --glass-white-top:.06; --glass-white-bottom:.03;
+      --glass-tint-cyan:.06; --glass-tint-pink:.06;
+      --glass-border:.16; --glass-blur:24px;
+    }
+
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100svh;background:#fff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;padding:12px clamp(16px,5vw,56px);color:#1a1a1a}
+    .wrap{width:min(1100px,86vw);margin:0 auto}
+
+    /* hero */
+    .card{position:relative;width:100%;aspect-ratio:11/3.2;border-radius:24px;overflow:hidden;cursor:pointer;background:#7367f0!important;box-shadow:0 18px 36px rgba(0,0,0,.18)}
+    .img-full{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transform:scale(1.08);transition:opacity .6s ease .35s,transform .6s ease}
+    .card:hover .img-full{opacity:1;transform:scale(1)}
+    .stage{position:absolute;inset:0;pointer-events:none;z-index:1}
+    .mask-letters{transform:scale(1);transition:transform 1.2s ease;transform-origin:50% 50%;transform-box:fill-box;will-change:transform}
+    .card:hover .mask-letters{transform:scale(12)}
+    .masked{opacity:1;transition:opacity .35s ease}
+    .card:hover .masked{opacity:0;transition:opacity .35s ease .9s}
+
+    /* nav */
+    .nav{width:100%;margin-top:12px;border-radius:18px;background:#7367f0;box-shadow:0 10px 24px rgba(0,0,0,.12);position:relative}
+    .menu{list-style:none;margin:0;padding:clamp(8px,1.4vw,12px) clamp(10px,2vw,18px);display:flex;align-items:center;justify-content:center;gap:clamp(10px,2.2vw,28px);flex-wrap:wrap}
+    .menu>li{position:relative}
+    .menu>li>a{color:#fff;text-decoration:none;font-weight:700;letter-spacing:.2px;padding:8px 14px;border-radius:9999px;display:inline-block;transition:background .2s ease,transform .2s ease}
+    .menu>li>a:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
+    .menu>li>a:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:9999px}
+    .menu>li>a.active{background:rgba(255,255,255,.28)}
+
+    /* liquid glass submenu + highlighting + flags */
+    @keyframes glassShift{0%{background-position:0% 0%,100% 0%,0% 0%}50%{background-position:30% 10%,70% 20%,0% 0%}100%{background-position:100% 15%,0% 25%,0% 0%}}
+    .submenu{
+      position:fixed;top:0;left:0;z-index:9999;
+      display:grid;grid-template-columns:repeat(2,minmax(160px,1fr));gap:10px 14px;
+      width:max-content;max-width:calc(100vw - 24px);padding:12px 12px;
+      background:
+        radial-gradient(1200px 420px at 40% 0%,rgba(56,189,248,var(--glass-tint-cyan)),transparent 60%),
+        radial-gradient(900px 360px at 70% 0%,rgba(244,114,182,var(--glass-tint-pink)),transparent 60%),
+        linear-gradient(180deg,rgba(255,255,255,var(--glass-white-top)),rgba(255,255,255,var(--glass-white-bottom)));
+      background-blend-mode:screen,screen,normal;
+      -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(150%) contrast(108%) brightness(1.04);
+      backdrop-filter:blur(var(--glass-blur)) saturate(150%) contrast(108%) brightness(1.04);
+      border-radius:16px;border:1px solid rgba(255,255,255,var(--glass-border));
+      box-shadow:0 20px 50px rgba(0,0,0,.18),inset 0 .5px 0 rgba(255,255,255,.45);
+      overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;
+      transform:translateY(-10px) scaleY(.78);transform-origin:top center;
+      will-change:transform,opacity,background-position;
+      transition:transform .85s cubic-bezier(.22,1,.36,1),opacity .72s ease,visibility .85s steps(1,end)
+    }
+    .submenu::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:conic-gradient(from 0deg at 50% 0%,rgba(168,85,247,.25),rgba(56,189,248,.22),rgba(244,114,182,.25),rgba(168,85,247,.25));filter:blur(14px);opacity:.45;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1px}
+    .submenu::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0) 40%);mix-blend-mode:screen;opacity:.22}
+    .submenu.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scaleY(1);animation:glassShift 10s ease-in-out infinite alternate}
+    .submenu.narrow{display:inline-flex;flex-direction:column;grid-template-columns:unset;width:max-content}
+    .submenu a{
+      position:relative;
+      color:#1b1440;text-decoration:none;font-weight:800;
+      padding:10px 12px 12px 32px;
+      border-radius:12px;border:1px solid rgba(255,255,255,.28);
+      background:linear-gradient(180deg,rgba(255,255,255,calc(var(--glass-white-top) + .02)),rgba(255,255,255,calc(var(--glass-white-bottom) + .02)));
+      box-shadow:0 4px 10px rgba(0,0,0,.06), inset 0 .5px 0 rgba(255,255,255,.18);
+      transition: background .18s ease,color .18s ease,transform .18s ease;
+      white-space:nowrap;
+    }
+    .submenu.narrow a{white-space:normal;overflow-wrap:anywhere}
+    .submenu a:hover{background:linear-gradient(180deg,rgba(255,255,255,calc(var(--glass-white-top) + .08)),rgba(255,255,255,calc(var(--glass-white-bottom) + .08)));transform:translateY(-1px)}
+    .submenu a::before{
+      content:"";position:absolute;left:12px;top:50%;
+      width:8px;height:8px;transform:translateY(-50%);border-radius:50%;
+      background:radial-gradient(circle at 35% 35%, #fff 12%, rgba(255,255,255,.6) 22%, transparent 50%),radial-gradient(circle at 60% 60%, #a855f7 0%, #60a5fa 55%, #f472b6 100%);
+      box-shadow:0 0 10px rgba(115,103,240,.35);opacity:.95;transition:transform .28s ease, opacity .28s ease, filter .28s ease;
+    }
+    .submenu a::after{
+      content:"";position:absolute;left:12px;right:12px;bottom:8px;height:2px;border-radius:999px;
+      background:linear-gradient(90deg,#a855f7,#60a5fa,#f472b6);
+      transform:scaleX(.25);transform-origin:left center;opacity:0;transition:opacity .28s ease, transform .36s cubic-bezier(.22,1,.36,1);
+    }
+    .submenu a:hover::after{opacity:.9;transform:scaleX(1)}
+    .submenu a:hover::before{transform:translateY(-50%) scale(.75);filter:saturate(1.2)}
+    .submenu a:focus-visible{outline:none;box-shadow:0 0 0 2px rgba(255,255,255,.75),0 0 0 4px rgba(115,103,240,.35);border-color:rgba(255,255,255,.5)}
+    /* флаги */
+    .submenu a[data-flag]{ padding-left: 42px; }
+    .submenu a[data-flag]::before{
+      content: attr(data-flag);
+      width:auto;height:auto;border-radius:0;background:none;box-shadow:none;font-size:18px;line-height:1;filter:none;opacity:1;left:12px;top:50%;transform:translateY(-50%);
+    }
+
+    .has-sub:hover>.submenu{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scaleY(1)}
+    @media (prefers-reduced-motion:reduce){.submenu,.submenu.open{transition-duration:.01ms!important;animation:none!important}}
+
+    /* content */
+    .panel{width:100%;margin-top:12px;background:#fff;border:3px solid #7367f0;border-radius:20px;box-shadow:0 10px 24px rgba(0,0,0,.08);padding:clamp(16px,2.2vw,28px);min-height:clamp(220px,28vh,420px)}
+    .panel h2{margin:0 0 8px;font-size:clamp(18px,2.2vw,28px);font-weight:800;color:#2a2347}
+    .panel p{margin:8px 0 0;line-height:1.55;color:#333}
+    .panel .brand-text, .panel .brand-text p{ color: var(--brand) !important; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <!-- Hero -->
+  <div class="card" aria-label="Credits">
+    <div class="img-full" id="bgFull" aria-hidden="true"></div>
+    <svg class="stage" viewBox="0 0 1100 352" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <mask id="reveal" style="mask-type:luminance">
+          <rect width="100%" height="100%" fill="black"/>
+          <g class="mask-letters">
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                  font-family="system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif"
+                  font-weight="900" font-size="120" letter-spacing="2" fill="white">CREDITS</text>
+          </g>
+        </mask>
+      </defs>
+      <image id="maskedImg" class="masked" width="100%" height="100%"
+             preserveAspectRatio="xMidYMid slice" crossorigin="anonymous"
+             href="" mask="url(#reveal)"/>
+    </svg>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav" aria-label="Main navigation">
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+
+      <!-- EAST -->
+      <li class="has-sub">
+        <a href="#" aria-haspopup="true">East ▾</a>
+        <div class="submenu" role="menu" aria-label="East">
+          <a href="#" data-flag="🇷🇺" data-img="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=2400">Russia</a>
+          <a href="#" data-flag="🇨🇳" data-img="https://images.pexels.com/photos/2101187/pexels-photo-2101187.jpeg?auto=compress&cs=tinysrgb&w=2400">China</a>
+          <a href="#" data-flag="🇯🇵" data-img="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=2400">Japan</a>
+          <a href="#" data-flag="🇰🇷" data-img="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=2400">South&nbsp;Korea</a>
+          <a href="#" data-flag="🇮🇳" data-img="https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=2400">India</a>
+          <a href="#" data-flag="🇹🇭" data-img="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=2400">Thailand</a>
+          <a href="#" data-flag="🇻🇳" data-img="https://images.pexels.com/photos/2101187/pexels-photo-2101187.jpeg?auto=compress&cs=tinysrgb&w=2400">Vietnam</a>
+          <a href="#" data-flag="🇮🇩" data-img="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=2400">Indonesia (Bali)</a>
+          <a href="#" data-flag="🇲🇳" data-img="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=2400">Mongolia</a>
+          <a href="#" data-flag="🇳🇵" data-img="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=2400">Nepal</a>
+          <a href="#" data-flag="🇦🇪" data-img="https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=2400">UAE (Dubai)</a>
+          <a href="#" data-flag="🇹🇷" data-img="https://images.pexels.com/photos/2088019/pexels-photo-2088019.jpeg?auto=compress&cs=tinysrgb&w=2400">Turkey</a>
+          <a href="#" data-flag="🇲🇽" data-img="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=2400">Mexico (Yucatán)</a>
+          <a href="#" data-flag="🇧🇷" data-img="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=2400">Brazil (Rio & Iguazú)</a>
+          <a href="#" data-flag="🇺🇸" data-img="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=2400">USA (NY & East Coast)</a>
+        </div>
+      </li>
+
+      <!-- WEST -->
+      <li class="has-sub">
+        <a href="#" aria-haspopup="true">West ▾</a>
+        <div class="submenu" role="menu" aria-label="West">
+          <a href="#" data-flag="🇵🇹" data-img="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=2400">Portugal (Azores & Madeira)</a>
+          <a href="#" data-flag="🇪🇸" data-img="https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=2400">Spain (Canary Islands)</a>
+          <a href="#" data-flag="🇮🇸" data-img="https://images.pexels.com/photos/316681/pexels-photo-316681.jpeg?auto=compress&cs=tinysrgb&w=2400">Iceland</a>
+          <a href="#" data-flag="🇮🇪" data-img="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=2400">Ireland</a>
+          <a href="#" data-flag="🇬🇧" data-img="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=2400">UK (Scotland Highlands)</a>
+          <a href="#" data-flag="🇲🇦" data-img="https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=2400">Morocco</a>
+          <a href="#" data-flag="🇺🇸" data-img="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=2400">USA (California & Parks)</a>
+          <a href="#" data-flag="🇺🇸" data-img="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=2400">USA (Hawaii)</a>
+          <a href="#" data-flag="🇨🇦" data-img="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=2400">Canada (Banff)</a>
+          <a href="#" data-flag="🇵🇪" data-img="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=2400">Peru (Machu Picchu)</a>
+          <a href="#" data-flag="🇨🇱" data-img="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=2400">Chile (Patagonia)</a>
+          <a href="#" data-flag="🇦🇷" data-img="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=2400">Argentina (Buenos Aires)</a>
+        </div>
+      </li>
+
+      <!-- NORTH -->
+      <li class="has-sub">
+        <a href="#" aria-haspopup="true">North ▾</a>
+        <div class="submenu" role="menu" aria-label="North">
+          <a href="#" data-flag="🇳🇴" data-img="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=2400">Norway (Fjords)</a>
+          <a href="#" data-flag="🇳🇴" data-img="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=2400">Lofoten Islands</a>
+          <a href="#" data-flag="🇮🇸" data-img="https://images.pexels.com/photos/316681/pexels-photo-316681.jpeg?auto=compress&cs=tinysrgb&w=2400">Iceland</a>
+          <a href="#" data-flag="🇸🇪" data-img="https://images.pexels.com/photos/316681/pexels-photo-316681.jpeg?auto=compress&cs=tinysrgb&w=2400">Sweden (Lapland)</a>
+          <a href="#" data-flag="🇫🇮" data-img="https://images.pexels.com/photos/316681/pexels-photo-316681.jpeg?auto=compress&cs=tinysrgb&w=2400">Finland (Rovaniemi)</a>
+          <a href="#" data-flag="🇳🇴" data-img="https://images.pexels.com/photos/316681/pexels-photo-316681.jpeg?auto=compress&cs=tinysrgb&w=2400">Svalbard</a>
+          <a href="#" data-flag="🇫🇴" data-img="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=2400">Faroe Islands</a>
+          <a href="#" data-flag="🇬🇱" data-img="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=2400">Greenland</a>
+          <a href="#" data-flag="🇬🇧" data-img="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=2400">Scotland (Isle of Skye)</a>
+          <a href="#" data-flag="🇺🇸" data-img="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=2400">Alaska</a>
+          <a href="#" data-flag="🇨🇦" data-img="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=2400">Canada (Yukon)</a>
+          <a href="#" data-flag="🇷🇺" data-img="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=2400">Kamchatka</a>
+        </div>
+      </li>
+
+      <!-- SOUTH -->
+      <li class="has-sub">
+        <a href="#" aria-haspopup="true">South ▾</a>
+        <div class="submenu" role="menu" aria-label="South">
+          <a href="#" data-flag="🇿🇦" data-img="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=2400">South Africa (Cape Town)</a>
+          <a href="#" data-flag="🇳🇦" data-img="https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=2400">Namibia (Sossusvlei)</a>
+          <a href="#" data-flag="🇧🇼" data-img="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=2400">Botswana (Okavango)</a>
+          <a href="#" data-flag="🇹🇿" data-img="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=2400">Tanzania (Zanzibar)</a>
+          <a href="#" data-flag="🇰🇪" data-img="https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=2400">Kenya (Masai Mara)</a>
+          <a href="#" data-flag="🇲🇬" data-img="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=2400">Madagascar</a>
+          <a href="#" data-flag="🇲🇺" data-img="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=2400">Mauritius</a>
+          <a href="#" data-flag="🇸🇨" data-img="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=2400">Seychelles</a>
+          <a href="#" data-flag="🇦🇺" data-img="https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=2400">Australia (East Coast)</a>
+          <a href="#" data-flag="🇳🇿" data-img="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=2400">New Zealand (South Island)</a>
+          <a href="#" data-flag="🇫🇯" data-img="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=2400">Fiji</a>
+          <a href="#" data-flag="🇵🇫" data-img="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=2400">French Polynesia</a>
+          <a href="#" data-flag="🇨🇱" data-img="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=2400">Chile (Torres del Paine)</a>
+          <a href="#" data-flag="🇦🇷" data-img="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=2400">Argentina (Ushuaia)</a>
+          <a href="#"           data-img="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=2400">Antarctica (cruise)</a>
+        </div>
+      </li>
+
+      <li><a href="credits.html" class="active" aria-current="page">Credits</a></li>
+    </ul>
+  </nav>
+
+  <!-- Credits content -->
+  <section class="panel" aria-label="Credits content">
+    <h2>Credits</h2>
+    <div class="brand-text">
+      <h3>Team</h3>
+      <ul>
+        <li>Concept & Direction — Your Name</li>
+        <li>Design — Your Name</li>
+        <li>Development — Your Name</li>
+        <li>Editing & QA — Your Name</li>
+      </ul>
+
+      <h3>Photography</h3>
+      <p>Demo images from <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a>. Please check each photo’s license page on Pexels if you reuse it.</p>
+      <ul>
+        <li>“Norway — Fjords” — Photo by <a href="#" target="_blank" rel="noopener">Photographer Name</a> (Pexels).</li>
+        <li>“Japan — Torii Gate” — Photo by <a href="#" target="_blank" rel="noopener">Photographer Name</a> (Pexels).</li>
+        <li>“Chile — Patagonia” — Photo by <a href="#" target="_blank" rel="noopener">Photographer Name</a> (Pexels).</li>
+        <!-- Добавь ещё пункты под свои реальные снимки -->
+      </ul>
+
+      <h3>UI, Fonts & Tools</h3>
+      <ul>
+        <li>Custom “Liquid Glass” dropdowns & SVG text-reveal hero (in-house).</li>
+        <li>Font stack — system UI fonts.</li>
+        <li>Build & tooling — vanilla HTML/CSS/JS.</li>
+      </ul>
+
+      <h3>Thanks</h3>
+      <p>Thanks to friends and early readers for feedback and inspiration.</p>
+
+      <h3>Contact</h3>
+      <p>Questions or attributions: <a href="mailto:you@example.com">you@example.com</a></p>
+
+      <h3>Version</h3>
+      <p>Travel World — v1.0.0</p>
+    </div>
+
+
+<script>
+  /* hero фото из пунктов подменю */
+  function buildPhotoPool(){
+    const urls=[]; document.querySelectorAll('.submenu a[data-img]').forEach(a=>{ const u=a.getAttribute('data-img'); if(u&&u.startsWith('https://images.pexels.com/')) urls.push(u); });
+    return urls.length?urls:["https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&w=2400"];
+  }
+  function pick(a){return a[Math.floor(Math.random()*a.length)]}
+  const bg=document.getElementById('bgFull'), masked=document.getElementById('maskedImg');
+  function setPhoto(url){ bg.style.backgroundImage=`url("${url}")`; masked.setAttribute('href',url); masked.setAttributeNS("http://www.w3.org/1999/xlink","href",url); }
+  ;(function preloadAndApply(tries=6){
+    const pool=buildPhotoPool(), url=pick(pool);
+    const img=new Image(); img.crossOrigin="anonymous";
+    img.onload=()=>setPhoto(url);
+    img.onerror=()=>{ if(tries>1) preloadAndApply(tries-1); else setPhoto(pool[0]); };
+    img.src=url+"&cb="+Date.now();
+  })();
+
+  /* позиционирование выпадающих подменю */
+  (function(){
+    const MARGIN=12,GAP_Y=2,NARROW_BP=1100,HIDE_DELAY=260;
+    let hideTimer=null,currentOpen=null;
+    const items=document.querySelectorAll('.has-sub');
+    const allMenus=[...document.querySelectorAll('.submenu')];
+
+    function closeAll(except=null){
+      allMenus.forEach(m=>{ if(m!==except) m.classList.remove('open'); });
+      document.querySelectorAll('.has-sub > a[aria-expanded="true"]').forEach(a=>a.setAttribute('aria-expanded','false'));
+      currentOpen=except;
+    }
+    function measure(el){
+      const prev={vis:el.style.visibility,tr:el.style.transition,tf:el.style.transform};
+      el.style.visibility='hidden'; el.style.transition='none'; el.style.transform='none';
+      el.classList.add('open'); const r=el.getBoundingClientRect(); el.classList.remove('open');
+      el.style.transform=prev.tf; el.style.transition=prev.tr; el.style.visibility=prev.vis; return r;
+    }
+
+    items.forEach(li=>{
+      const trigger=li.querySelector(':scope > a');
+      const menu=li.querySelector(':scope > .submenu'); if(!trigger||!menu) return;
+
+      function open(){
+        clearTimeout(hideTimer); closeAll(menu);
+        (window.innerWidth<=NARROW_BP)?menu.classList.add('narrow'):menu.classList.remove('narrow');
+
+        const t=trigger.getBoundingClientRect();
+        const r=measure(menu); const w=r.width;
+
+        let left=(t.left+t.right)/2-w/2;
+        left=Math.max(MARGIN,Math.min(left,window.innerWidth-MARGIN-w));
+
+        const top=t.bottom+GAP_Y;
+        const maxH=Math.max(160,window.innerHeight-MARGIN-top);
+        menu.style.maxHeight=maxH+'px'; menu.style.overflow='auto';
+
+        menu.style.left=Math.round(left)+'px';
+        menu.style.top=Math.round(top)+'px';
+
+        menu.classList.add('open');
+        trigger.setAttribute('aria-expanded','true');
+        currentOpen=menu;
+      }
+
+      function scheduleClose(){
+        clearTimeout(hideTimer);
+        hideTimer=setTimeout(()=>{
+          if(menu===currentOpen){
+            menu.classList.remove('open');
+            trigger.setAttribute('aria-expanded','false');
+            currentOpen=null;
+          }
+        },HIDE_DELAY);
+      }
+
+      li.addEventListener('pointerenter',open);
+      li.addEventListener('pointerleave',scheduleClose);
+      menu.addEventListener('pointerenter',()=>clearTimeout(hideTimer));
+      menu.addEventListener('pointerleave',scheduleClose);
+
+      trigger.addEventListener('click',e=>{e.preventDefault(); menu.classList.contains('open')?scheduleClose():open()});
+      trigger.addEventListener('focusin',open);
+      trigger.addEventListener('blur',scheduleClose);
+
+      ['resize','scroll'].forEach(evt=>{
+        window.addEventListener(evt,()=>{ if(menu.classList.contains('open')) open(); },{passive:true});
+      });
+    });
+
+    document.addEventListener('pointerdown',e=>{
+      if(![...items].some(li=>li.contains(e.target))) closeAll(null);
+    });
+  })();
+</script>
+</body>
+</html>
